@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Guide to Using Singleton Design Pattern in Android</title>
+</head>
+<body>
+
+    <article>
+        <h1>A Guide to Using Singleton Design Pattern in Android</h1>
+
+        <p>The Singleton pattern is one of the most commonly used design patterns in Android development. It ensures that a class has only one instance throughout the application’s lifecycle and provides a global point of access to that instance.</p>
+
+        <p>Imagine a scenario where Class A is used in both Class B and Class C. Without the Singleton pattern, each class would need to create its own instance of Class A, leading to redundant object creation. Now, if the number of dependent classes increases, multiple instances of Class A would be created unnecessarily, resulting in inefficient memory usage.</p>
+
+        <p>This is where the Singleton pattern comes into play. Instead of creating multiple instances, we create a single instance of Class A and share it across all dependent classes, ensuring efficient resource utilization.</p>
+
+        <h2>Why Use Singleton Pattern?</h2>
+        <ul>
+            <li>Prevents multiple unnecessary instances.</li>
+            <li>Ensures a single shared instance is accessible across different parts of the application.</li>
+            <li>Useful for managing shared resources like database connections or network clients.</li>
+        </ul>
+
+        <h2>Singleton Implementation in Java</h2>
+        <p>Here is an example code of how you will create a singleton instance of any class in Java:</p>
+        <pre><code>
+public class A {
+    private static A instance;
+
+    private A() {}
+
+    public static synchronized A getInstance() {
+        if (instance == null) {
+            instance = new A();
+        }
+        return instance;
+    }
+
+    public void doSomething() {
+        System.out.println("Using Singleton Instance of A");
+    }
+}
+        </code></pre>
+        <p>The <code>synchronized</code> keyword ensures thread safety by allowing only one thread at a time to execute this method. If multiple threads call <code>getInstance()</code> simultaneously, <code>synchronized</code> ensures that only one thread enters the method at a time. This prevents race conditions, where multiple threads might create multiple instances, violating the Singleton pattern.</p>
+
+        <h2>Singleton Implementation in Kotlin</h2>
+        <p>In Kotlin, we can achieve the same Singleton behavior using the <code>object</code> declaration, which ensures thread safety and avoids unnecessary boilerplate code.</p>
+        <pre><code>
+object A {
+    fun doSomething() {
+        println("Using Singleton Instance of A")
+    }
+}
+        </code></pre>
+        <p>Here, <code>A</code> is a Singleton because <code>object</code> in Kotlin automatically creates a single instance.</p>
+
+        <h2>Examples of Singleton in Android</h2>
+        <pre><code>
+object NetworkClient {
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://api.example.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    fun getRetrofitInstance(): Retrofit {
+        return retrofit
+    }
+}
+        </code></pre>
+        <p>Here, <code>NetworkClient</code> is a Singleton that provides a single instance of Retrofit across the app.</p>
+
+        <h2>Disadvantages of using Singleton Pattern</h2>
+        <ul>
+            <li>Multiple classes depending on a shared instance can make testing and modifications harder.</li>
+            <li>Holding a reference to an Activity or Context can cause memory leaks if not handled properly.</li>
+            <li>Since Singletons act as global state, dependencies may not be explicitly visible, making debugging difficult.</li>
+            <li>Improper implementation can lead to race conditions or unnecessary synchronization overhead, affecting performance.</li>
+        </ul>
+
+        <hr>
+        <p>That’s all from me for today 😁. If I am lacking somewhere or this article needs some correction just comment down. Byeeee!!!👋</p>
+        
+        <h3>Follow me on socials:</h3>
+        <p>
+            <a href="https://x.com/shalenmathew" target="_blank" rel="noopener noreferrer">X</a>, 
+            <a href="https://www.linkedin.com/in/shalen-mathew-3b566921b" target="_blank" rel="noopener noreferrer">LinkedIn</a>, 
+            <a href="https://github.com/shalenMathew" target="_blank" rel="noopener noreferrer">GitHub</a>, 
+            <a href="https://bsky.app/profile/shalenmathew.bsky.social" target="_blank" rel="noopener noreferrer">BlueSky</a>, 
+            <a href="https://linktr.ee/shalenmathew" target="_blank" rel="noopener noreferrer">Linktree</a>
+        </p>
+
+
+    </article>
+
+</body>
+</html>

@@ -85,6 +85,7 @@
             <nav class="navigation">
                 <a href="#about">ABOUT</a>
                 <a href="#projects">PROJECTS</a>
+                <a href="#blogs">BLOGS</a>
                 <a href="#skills">SKILLS</a>
                 <a href="#experience">EXPERNECE</a>
             </nav>
@@ -242,6 +243,40 @@
         </article>
     </section>
 
+    <section class="blogs-section" id="blogs">
+        <div class="blogs-layout">
+            <div class="blogs-heading">
+                <h2 class="section-title blogs-title">BLOGS</h2>
+                <img src="assets/Blog.png" alt="Medieval book artwork">
+            </div>
+
+            <div class="blogs-copy">
+                <p class="blogs-intro">Here are a few blogs where I share what I’m learning and building.</p>
+
+                <div class="blog-list">
+                    <a class="blog-row" href="#">
+                        <span class="blog-title-text">How to freelance and make money as a Freelance ...</span>
+                        <span class="blog-date">24-03-2022</span>
+                    </a>
+                    <a class="blog-row" href="#">
+                        <span class="blog-title-text">Ace the Javascript Interview</span>
+                        <span class="blog-date">24-03-2022</span>
+                    </a>
+                    <a class="blog-row" href="#">
+                        <span class="blog-title-text">Top 5 courses and resources to learn Next JS ...</span>
+                        <span class="blog-date">24-03-2022</span>
+                    </a>
+                    <a class="blog-row" href="#">
+                        <span class="blog-title-text">Ace the Javascript Interview</span>
+                        <span class="blog-date">24-03-2022</span>
+                    </a>
+                </div>
+
+                <a class="blogs-more" href="blog.html">See more blogs</a>
+            </div>
+        </div>
+    </section>
+
     <section class="skills-section" id="skills">
         <div class="skills-art">
             <h2 class="section-title skills-title">
@@ -319,6 +354,45 @@
                 musicToggle.setAttribute("aria-pressed", "false");
             }
         });
+
+        // Load latest 4 blogs dynamically from manifest.json
+        async function loadLatestBlogs() {
+            try {
+                const response = await fetch('blogs/manifest.json');
+                const blogs = await response.json();
+
+                // Sort by date (newest first)
+                blogs.sort((a, b) => {
+                    const dateA = new Date(a.date.split('-').reverse().join('-'));
+                    const dateB = new Date(b.date.split('-').reverse().join('-'));
+                    return dateB - dateA;
+                });
+
+                // Get latest 4
+                const latestBlogs = blogs.slice(0, 4);
+
+                // Update the blog list on homepage
+                const blogList = document.querySelector('.blog-list');
+                if (blogList) {
+                    blogList.innerHTML = '';
+                    latestBlogs.forEach(blog => {
+                        const blogRow = document.createElement('a');
+                        blogRow.className = 'blog-row';
+                        blogRow.href = `blog-detail.html?slug=${blog.slug}`;
+                        blogRow.innerHTML = `
+                            <span class="blog-title-text">${blog.title}</span>
+                            <span class="blog-date">${blog.date}</span>
+                        `;
+                        blogList.appendChild(blogRow);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+            }
+        }
+
+        // Load blogs when page loads
+        document.addEventListener('DOMContentLoaded', loadLatestBlogs);
     </script>
 </body>
 </html>

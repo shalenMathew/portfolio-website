@@ -1,0 +1,12 @@
+[
+
+  {
+    "id": 1,
+    "title": "A Guide to Using Singleton Design Pattern in Android",
+    "description": "Learn about the Singleton design pattern in Android development. Explore implementations in Java and Kotlin, and understand when and how to use this powerful pattern effectively.",
+    "date": "26-05-2026",
+    "slug": "singleton-design-pattern-android",
+    "file": "Singleton.html"
+  }
+]
+

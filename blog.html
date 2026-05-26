@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore my blog posts on technology, development, and creative insights. Read articles about Android development, JavaScript, and more.">
+    <meta name="keywords" content="blog, technology, development, Android, JavaScript, programming">
+    <meta name="author" content="Shalen Mathew">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shalen Mathew - Blog">
+    <meta property="og:description" content="Read my latest blog posts on technology and development.">
+    <meta property="og:url" content="https://shalenmathew.github.io/Portfolio-Website/blog.html">
+    <meta property="og:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Shalen Mathew - Blog">
+    <meta name="twitter:description" content="Read my latest blog posts on technology and development.">
+    <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    
+    <title>Blog - Shalen Mathew | App Developer</title>
+    <link rel="stylesheet" href="style.css?v=20260422">
+    <link rel="canonical" href="https://shalenmathew.github.io/Portfolio-Website/blog.html">
+    
+    <!-- Schema Markup for Blog Collection -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Shalen Mathew - Blog",
+        "description": "Blog posts on technology, development, and creative insights",
+        "url": "https://shalenmathew.github.io/Portfolio-Website/blog.html",
+        "author": {
+            "@type": "Person",
+            "name": "Shalen Mathew",
+            "url": "https://shalenmathew.github.io/Portfolio-Website/"
+        }
+    }
+    </script>
+    
+    <style>
+        .blogs-page-container {
+            width: 100%;
+            background-color: #efefee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 72px 7vw;
+            min-height: 100vh;
+        }
+
+        .blogs-page-wrapper {
+            width: 100%;
+            max-width: 1120px;
+        }
+
+        .blogs-page-header {
+            margin-bottom: 64px;
+            animation: fade-up 700ms ease both;
+        }
+
+        .blogs-page-title {
+            font-family: 'MySolidGraffiti', sans-serif;
+            font-size: clamp(4rem, 6.5vw, 6.1rem);
+            color: #d04033;
+            margin-bottom: 12px;
+            line-height: 0.95;
+        }
+
+        .blogs-page-subtitle {
+            color: #4d4d4d;
+            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+            font-weight: 300;
+            line-height: 1.45;
+            max-width: 760px;
+        }
+
+        .blogs-page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            animation: fade-up 800ms ease both;
+        }
+
+        .blog-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            column-gap: 18px;
+            padding: 24px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(208, 64, 51, 0.08);
+            border-radius: 18px;
+            text-decoration: none;
+            color: #4d4d4d;
+            transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateX(6px);
+            background: rgba(208, 64, 51, 0.06);
+            border-color: rgba(208, 64, 51, 0.18);
+            box-shadow: 0 12px 22px rgba(126, 63, 54, 0.08);
+        }
+
+        .blog-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .blog-card-title {
+            font-size: clamp(1.1rem, 1.45vw, 1.38rem);
+            font-weight: 700;
+            color: #3a3a3a;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+            transition: color 180ms ease, text-underline-offset 180ms ease;
+        }
+
+        .blog-card:hover .blog-card-title {
+            color: #d04033;
+            text-underline-offset: 7px;
+        }
+
+        .blog-card-description {
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            font-weight: 300;
+            color: #6a6a6a;
+            line-height: 1.4;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .blog-card-date {
+            font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+            font-weight: 400;
+            color: #6a6a6a;
+            white-space: nowrap;
+            transition: color 180ms ease;
+        }
+
+        .blog-card:hover .blog-card-date {
+            color: #d04033;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            color: #d04033;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: transform 180ms ease;
+        }
+
+        .back-to-home:hover {
+            transform: translateX(-6px);
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blogs-page-container {
+                padding: 48px 24px;
+            }
+
+            .blog-card {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .blog-card-meta {
+                justify-content: space-between;
+            }
+
+            .blogs-page-title {
+                font-size: 3.2rem;
+            }
+        }
+    </style>
+</head>
+<body style="background: #efefee; padding: 0;">
+    <div class="blogs-page-container">
+        <div class="blogs-page-wrapper">
+            <a href="index.html" class="back-to-home">← Back to home</a>
+
+            <div class="blogs-page-header">
+                <h1 class="blogs-page-title">BLOGS</h1>
+                <p class="blogs-page-subtitle">Here are my latest articles on technology, development, and creative insights.</p>
+            </div>
+
+            <div class="blogs-page-list" id="blogList">
+                <p style="color: #4d4d4d;">Loading blogs...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load blogs from manifest.json
+        async function loadBlogs() {
+            try {
+                const response = await fetch('blogs/manifest.json');
+                const blogs = await response.json();
+
+                // Sort by date (newest first)
+                blogs.sort((a, b) => {
+                    const dateA = new Date(a.date.split('-').reverse().join('-'));
+                    const dateB = new Date(b.date.split('-').reverse().join('-'));
+                    return dateB - dateA;
+                });
+
+                // Render blogs
+                const blogList = document.getElementById('blogList');
+                blogList.innerHTML = '';
+
+                blogs.forEach(blog => {
+                    const blogCard = document.createElement('a');
+                    blogCard.className = 'blog-card';
+                    blogCard.href = `blog-detail.html?slug=${blog.slug}`;
+
+                    blogCard.innerHTML = `
+                        <div class="blog-card-content">
+                            <h2 class="blog-card-title">${blog.title}</h2>
+                            ${blog.description ? `<p class="blog-card-description">${blog.description}</p>` : ''}
+                            <div class="blog-card-meta">
+                                <span class="blog-card-date">📅 ${blog.date}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    blogList.appendChild(blogCard);
+                });
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+                document.getElementById('blogList').innerHTML = '<p style="color: #d04033;">Error loading blogs.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadBlogs);
+    </script>
+</body>
+</html>
