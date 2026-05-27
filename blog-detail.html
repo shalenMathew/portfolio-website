@@ -219,11 +219,11 @@
 
             <div class="blog-detail-content" id="blogContent">
                 <p>Loading blog content...</p>
-            </div>
+            </div> 
 
             <div class="blog-detail-cta">
                 <h3>Interested in my work?</h3>
-                <p>I'm passionate about building scalable applications and sharing knowledge through writing. If you enjoyed this article, check out my portfolio to see how I apply these concepts in real-world projects.</p>
+                <p>I'm an app developer and a freelancer. Click below to learn more about my lore. You will love my work .</p>
                 <a href="index.html" class="blog-detail-cta-button">Check Out My Portfolio →</a>
             </div>
         </div>
@@ -237,7 +237,7 @@
         // Load blog from manifest.json
         async function loadBlog() {
             try {
-                const response = await fetch('blogs/manifest.json');
+                const response = await fetch('blogs/Manifest/manifest.json');
                 const blogs = await response.json();
 
                 // Find blog by slug

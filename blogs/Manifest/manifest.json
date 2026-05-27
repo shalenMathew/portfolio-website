@@ -6,6 +6,15 @@
     "date": "26-05-2026",
     "slug": "singleton-design-pattern-android",
     "file": "Singleton.html"
+  },
+
+   {
+    "id": 2,
+    "title": "A Quick Guide into Builder Design Pattern in Android",
+    "description": "This quick Guide to the Builder Design Pattern is perfect whether you’re looking for a quick revision or aiming to grasp the concept from scratch.",
+    "date": "27-05-2026",
+    "slug": "",
+    "file": "BuilderDesign.html"
   }
 ]
 

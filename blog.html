@@ -259,7 +259,7 @@
         // Load blogs from manifest.json
         async function loadBlogs() {
             try {
-                const response = await fetch('blogs/manifest.json');
+                const response = await fetch('blogs/Manifest/manifest.json');
                 const blogs = await response.json();
 
                 // Sort by date (newest first)
