@@ -16,8 +16,9 @@
     <meta name="twitter:title" content="Shalen Mathew - Blog">
     <meta name="twitter:description" content="Read my latest blog posts on technology and development.">
     <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
-    <title>Blog - Shalen Mathew | App Developer</title>
-    <link rel="stylesheet" href="style.css?v=20260422">
+    <title>Writing — Shalen Mathew</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/profileImg.png">
+    <link rel="stylesheet" href="style.css?v=20260601">
     <link rel="canonical" href="https://shalenmathew.github.io/Portfolio-Website/blog.html">
     <script type="application/ld+json">
     {
@@ -34,176 +35,27 @@
     }
     </script>
     <style>
-        .blogs-page-container {
-            width: 100%;
-            background-color: #efefee;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 72px 7vw;
+        body.blog-page {
+            margin: 0;
             min-height: 100vh;
+            padding: 0;
+            background: var(--bg-grey);
+            color: var(--text-dark);
+            font-family: var(--body-font);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .blogs-page-wrapper {
-            width: 100%;
-            max-width: 1120px;
+        .blog-page-shell {
+            width: min(640px, 100%);
+            margin: 0 auto;
+            padding: clamp(48px, 8vh, 88px) clamp(20px, 5vw, 32px) 72px;
+            animation: blog-fade-up 700ms ease both;
         }
 
-        .blogs-page-header {
-            margin-bottom: 64px;
-            animation: fade-up 700ms ease both;
-        }
-
-        .blogs-page-title {
-            font-family: 'MySolidGraffiti', sans-serif;
-            font-size: clamp(4rem, 6.5vw, 6.1rem);
-            color: #d04033;
-            margin-bottom: 12px;
-            line-height: 0.95;
-            font-weight: normal;
-        }
-
-        .blogs-page-subtitle {
-            color: #4d4d4d;
-            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
-            font-weight: 300;
-            line-height: 1.45;
-            max-width: 760px;
-        }
-
-        .blogs-page-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            animation: fade-up 800ms ease both;
-        }
-
-        .blog-card {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            padding: 32px 28px;
-            background: white;
-            border: 1px solid rgba(208, 64, 51, 0.12);
-            border-radius: 16px;
-            text-decoration: none;
-            color: #4d4d4d;
-            transition: all 240ms cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #d04033, rgba(208, 64, 51, 0.3));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 240ms ease;
-        }
-
-        .blog-card:hover {
-            border-color: rgba(208, 64, 51, 0.24);
-            box-shadow: 0 16px 40px rgba(208, 64, 51, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .blog-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .blog-card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .blog-card-title {
-            font-size: clamp(1.25rem, 1.6vw, 1.5rem);
-            font-weight: 700;
-            color: #3a3a3a;
-            line-height: 1.3;
-            transition: color 240ms ease;
-            margin: 0;
-        }
-
-        .blog-card:hover .blog-card-title {
-            color: #d04033;
-        }
-
-        .blog-card-description {
-            font-size: clamp(1.02rem, 1.3vw, 1.15rem);
-            font-weight: 400;
-            color: #6a6a6a;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .blog-card-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 8px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(208, 64, 51, 0.08);
-        }
-
-        .blog-card-date {
-            font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-            font-weight: 500;
-            color: #d04033;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 240ms ease;
-        }
-
-        .blog-card:hover .blog-card-date {
-            transform: translateX(4px);
-        }
-
-        .blog-card-arrow {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-left: auto;
-            color: #d04033;
-            opacity: 0;
-            transform: translateX(-8px);
-            transition: all 240ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .blog-card:hover .blog-card-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .back-to-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 48px;
-            color: #d04033;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            transition: transform 180ms ease;
-        }
-
-        .back-to-home:hover {
-            transform: translateX(-6px);
-        }
-
-        @keyframes fade-up {
+        @keyframes blog-fade-up {
             from {
                 opacity: 0;
-                transform: translateY(18px);
+                transform: translateY(14px);
             }
             to {
                 opacity: 1;
@@ -211,69 +63,238 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .blogs-page-container {
-                padding: 48px 24px;
+        .blog-page-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .blog-page-avatar {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--theme-red);
+            margin-bottom: 18px;
+        }
+
+        .blog-page-brand {
+            margin: 0;
+            font-size: clamp(1.45rem, 4.5vw, 1.85rem);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .blog-page-lede {
+            margin: 0 0 36px;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.65;
+            color: #6a6a6a;
+            text-align: center;
+        }
+
+        .blog-page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .blog-page-post {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: baseline;
+            column-gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(58, 58, 58, 0.08);
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 160ms ease;
+        }
+
+        .blog-page-post:first-child {
+            border-top: 1px solid rgba(58, 58, 58, 0.08);
+        }
+
+        .blog-page-post:hover .blog-page-post-title,
+        .blog-page-post:focus-visible .blog-page-post-title {
+            color: var(--theme-red);
+        }
+
+        .blog-page-post:focus-visible {
+            outline: none;
+        }
+
+        .blog-page-post:focus-visible .blog-page-post-title {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .blog-page-post-title {
+            font-size: clamp(1.02rem, 2.4vw, 1.12rem);
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-dark);
+            transition: color 160ms ease;
+        }
+
+        .blog-page-post-date {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #9a9a9a;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .blog-page-status {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #6a6a6a;
+            padding: 24px 0;
+        }
+
+        .blog-page-status.is-error {
+            color: var(--theme-red);
+        }
+
+        .blog-page-footer {
+            margin-top: 56px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(58, 58, 58, 0.08);
+            text-align: center;
+        }
+
+        .blog-page-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #8a8a8a;
+            text-decoration: none;
+            transition: color 160ms ease, transform 160ms ease;
+        }
+
+        .blog-page-back:hover,
+        .blog-page-back:focus-visible {
+            color: var(--theme-red);
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 520px) {
+            .blog-page-post {
+                grid-template-columns: 1fr;
+                row-gap: 6px;
+                padding: 16px 0;
             }
 
-            .blog-card-meta {
-                justify-content: space-between;
+            .blog-page-post-date {
+                justify-self: start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .blog-page-shell {
+                animation: none;
             }
 
-            .blogs-page-title {
-                font-size: 3.2rem;
+            .blog-page-post,
+            .blog-page-back,
+            .blog-page-post-title {
+                transition: none;
             }
         }
     </style>
 </head>
-<body style="background: #efefee; padding: 0;">
-    <div class="blogs-page-container">
-        <div class="blogs-page-wrapper">
-            <a href="index.html" class="back-to-home">&larr; Back to home</a>
+<body class="blog-page">
+    <div class="blog-page-shell">
+        <header class="blog-page-top">
+            <img class="blog-page-avatar" src="assets/profileImg.png" alt="Shalen Mathew" width="76" height="76">
+            <p class="blog-page-brand">Shalen Mathew's space</p>
+        </header>
 
-            <div class="blogs-page-header">
-                <h1 class="blogs-page-title">BLOGS</h1>
-                <p class="blogs-page-subtitle">Here are my latest articles on technology, development, and creative insights.</p>
-            </div>
+        <p class="blog-page-lede">
+            Notes on Android, architecture, and things I’m learning while building apps and shipping side projects.
+        </p>
 
-            <div class="blogs-page-list" id="blogList">
-                <p style="color: #4d4d4d;">Loading blogs...</p>
-            </div>
+        <div class="blog-page-list" id="blogList" role="list">
+            <p class="blog-page-status">Loading…</p>
         </div>
+
+        <footer class="blog-page-footer">
+            <a href="index.html" class="blog-page-back">&larr; Back to portfolio</a>
+        </footer>
     </div>
 
     <script>
+        function formatPostDate(blog) {
+            if (blog.displayDate) {
+                const parts = blog.displayDate.split(/[-/.]/);
+                if (parts.length === 3) {
+                    const [d, m, y] = parts;
+                    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+                    const monthIndex = parseInt(m, 10) - 1;
+                    if (monthIndex >= 0 && monthIndex < 12) {
+                        return `${d}. ${months[monthIndex]}. ${y}`;
+                    }
+                }
+                return blog.displayDate;
+            }
+
+            const parsed = new Date(blog.date);
+            if (Number.isNaN(parsed.getTime())) {
+                return blog.date || '';
+            }
+
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const day = String(parsed.getDate()).padStart(2, '0');
+            return `${day}. ${months[parsed.getMonth()]}. ${parsed.getFullYear()}`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         async function loadBlogs() {
+            const blogList = document.getElementById('blogList');
+
             try {
                 const response = await fetch('blogs/Manifest/manifest.json');
                 const blogs = await response.json();
 
                 blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                const blogList = document.getElementById('blogList');
                 blogList.innerHTML = '';
 
+                if (!blogs.length) {
+                    blogList.innerHTML = '<p class="blog-page-status">No posts yet.</p>';
+                    return;
+                }
+
                 blogs.forEach((blog) => {
-                    const blogCard = document.createElement('a');
-                    blogCard.className = 'blog-card';
-                    blogCard.href = blog.url;
-
-                    blogCard.innerHTML = `
-                        <div class="blog-card-content">
-                            <h2 class="blog-card-title">${blog.title}</h2>
-                            ${blog.description ? `<p class="blog-card-description">${blog.description}</p>` : ''}
-                            <div class="blog-card-meta">
-                                <span class="blog-card-date">Published: ${blog.displayDate || blog.date}</span>
-                                <span class="blog-card-arrow">&rarr;</span>
-                            </div>
-                        </div>
+                    const post = document.createElement('a');
+                    post.className = 'blog-page-post';
+                    post.href = blog.url;
+                    post.setAttribute('role', 'listitem');
+                    post.innerHTML = `
+                        <span class="blog-page-post-title">${escapeHtml(blog.title)}</span>
+                        <time class="blog-page-post-date" datetime="${escapeHtml(blog.date || '')}">${escapeHtml(formatPostDate(blog))}</time>
                     `;
-
-                    blogList.appendChild(blogCard);
+                    blogList.appendChild(post);
                 });
             } catch (error) {
                 console.error('Error loading blogs:', error);
-                document.getElementById('blogList').innerHTML = '<p style="color: #d04033;">Error loading blogs.</p>';
+                blogList.innerHTML = '<p class="blog-page-status is-error">Couldn’t load posts. Try again later.</p>';
             }
         }
 
