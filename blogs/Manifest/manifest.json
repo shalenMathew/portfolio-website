@@ -1,5 +1,15 @@
 [
   {
+    "id": 3,
+    "title": "Why I'm Building in Public (And Why You Should Too)",
+    "description": "How building my Quotes app in public led to GitHub stars, sharper Android skills, and open Hacktoberfest projects for developers.",
+    "date": "2026-06-01",
+    "displayDate": "01-06-2026",
+    "slug": "building-in-public-android",
+    "file": "BuildingInPublic.html",
+    "url": "blogs/BuildingInPublic.html"
+  },
+  {
     "id": 1,
     "title": "A Guide to Using Singleton Design Pattern in Android",
     "description": "Learn about the Singleton design pattern in Android development. Explore implementations in Java and Kotlin, and understand when and how to use this pattern effectively.",

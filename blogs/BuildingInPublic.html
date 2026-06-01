@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why I'm Building in Public (And Why You Should Too) | Shalen Mathew</title>
+    <meta name="description" content="How building my Quotes app in public led to GitHub stars, sharper Android skills, and open Hacktoberfest projects for developers.">
+    <meta name="author" content="Shalen Mathew">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shalenmathew.github.io/Portfolio-Website/blogs/BuildingInPublic.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why I'm Building in Public (And Why You Should Too)">
+    <meta property="og:description" content="How building my Quotes app in public led to GitHub stars, sharper Android skills, and open Hacktoberfest projects for developers.">
+    <meta property="og:url" content="https://shalenmathew.github.io/Portfolio-Website/blogs/BuildingInPublic.html">
+    <meta property="og:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why I'm Building in Public (And Why You Should Too)">
+    <meta name="twitter:description" content="How building my Quotes app in public led to GitHub stars, sharper Android skills, and open Hacktoberfest projects for developers.">
+    <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Why I'm Building in Public (And Why You Should Too)",
+        "description": "How building my Quotes app in public led to GitHub stars, sharper Android skills, and open Hacktoberfest projects for developers.",
+        "datePublished": "2026-06-01",
+        "author": {
+            "@type": "Person",
+            "name": "Shalen Mathew",
+            "url": "https://shalenmathew.github.io/Portfolio-Website/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://shalenmathew.github.io/Portfolio-Website/blogs/BuildingInPublic.html"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="../style.css?v=20260422">
+    <style>
+        body {
+            background-color: #efefee !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        .blog-detail-page {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 7vw;
+            min-height: 100vh;
+            background-color: #efefee;
+        }
+
+        .blog-detail-wrapper {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .blog-detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            color: #d04033;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: transform 180ms ease;
+        }
+
+        .blog-detail-back:hover {
+            transform: translateX(-6px);
+        }
+
+        .blog-detail-header {
+            margin-bottom: 48px;
+            animation: fade-up 700ms ease both;
+        }
+
+        .blog-detail-title {
+            font-family: 'MySolidGraffiti', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            color: #d04033;
+            margin-bottom: 16px;
+            line-height: 1;
+            font-weight: normal;
+        }
+
+        .blog-detail-meta {
+            color: #6a6a6a;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            font-weight: 400;
+        }
+
+        .blog-detail-content {
+            line-height: 1.8;
+            font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+            color: #4d4d4d;
+            animation: fade-up 800ms ease both;
+        }
+
+        .blog-detail-content p {
+            margin-bottom: 24px;
+        }
+
+        .blog-detail-content h2 {
+            font-size: clamp(1.6rem, 2vw, 1.8rem);
+            color: #3a3a3a;
+            margin: 36px 0 16px;
+            font-weight: 700;
+        }
+
+        .blog-detail-content h3 {
+            font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+            color: #3a3a3a;
+            margin: 30px 0 14px;
+            font-weight: 700;
+        }
+
+        .blog-detail-content ul {
+            margin: 20px 0 20px 32px;
+            padding: 0;
+        }
+
+        .blog-detail-content li {
+            margin-bottom: 12px;
+            color: #4d4d4d;
+        }
+
+        .blog-detail-content a {
+            color: #d04033;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .blog-detail-content a:hover {
+            color: #c0351f;
+        }
+
+        .blog-detail-content pre {
+            background: rgba(58, 58, 58, 0.06);
+            border: 1px solid rgba(208, 64, 51, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            overflow-x: auto;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .blog-detail-content code {
+            font-family: 'Courier New', monospace;
+            color: #3a3a3a;
+        }
+
+        .blog-detail-social {
+            margin-top: 48px;
+            padding-top: 36px;
+            border-top: 1px solid rgba(58, 58, 58, 0.1);
+            animation: fade-up 850ms ease both;
+        }
+
+        .blog-detail-social-title {
+            margin: 0 0 18px;
+            font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+            font-weight: 700;
+            color: #3a3a3a;
+        }
+
+        .blog-detail-social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 12px;
+        }
+
+        .blog-detail-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 10px 20px;
+            border: 1.5px solid rgba(208, 64, 51, 0.22);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+            color: #d04033;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .blog-detail-social-link:hover {
+            background: rgba(208, 64, 51, 0.08);
+            border-color: rgba(208, 64, 51, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(208, 64, 51, 0.1);
+        }
+
+        .blog-detail-cta {
+            background: rgba(208, 64, 51, 0.06);
+            border: 1.5px solid rgba(208, 64, 51, 0.18);
+            border-radius: 18px;
+            padding: 32px 28px;
+            margin-top: 48px;
+            animation: fade-up 900ms ease both;
+        }
+
+        .blog-detail-cta h3 {
+            margin-top: 0;
+            margin-bottom: 14px;
+            color: #d04033;
+            font-size: clamp(1.3rem, 1.6vw, 1.5rem);
+        }
+
+        .blog-detail-cta p {
+            color: #4d4d4d;
+            margin-bottom: 20px;
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+        }
+
+        .blog-detail-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #d04033;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+        }
+
+        .blog-detail-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(208, 64, 51, 0.16);
+            background: #c0351f;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-detail-page {
+                padding: 32px 24px;
+            }
+
+            .blog-detail-title {
+                font-size: 2.2rem;
+            }
+
+            .blog-detail-content {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-detail-page">
+        <div class="blog-detail-wrapper">
+            <a href="../blog.html" class="blog-detail-back">&larr; Back to blogs</a>
+
+            <article class="blog-detail-header">
+                <h1 class="blog-detail-title">Why I'm Building in Public (And Why You Should Too)</h1>
+                <p class="blog-detail-meta">Published: <time datetime="2026-06-01">01-06-2026</time></p>
+            </article>
+
+            <div class="blog-detail-content">
+                <p>A few months ago, I did something different. I started building in public.</p>
+
+                <p>I've built plenty of apps before. Most of them died in my local repository, never seeing the light of day. But this time with my Quotes app, I decided to share every step of the journey online. The wins, the bugs, the "why is this not working" moments. All of it.</p>
+
+                <p>And guess what? The app just hit 50 stars on GitHub.</p>
+
+                <p>That might not sound like much compared to big open source projects, but for me? It was validation. Proof that people actually cared about what I was building.</p>
+
+                <h2>How It Started</h2>
+                <p>I've always wanted to build a Quotes app. Simple idea, right? But I'd never gotten around to it. This time though, I made a promise to myself: I'd build it in public instead of coding alone in my room like I usually do.</p>
+
+                <p>Android development can get lonely. And frustrating. Really frustrating. So I started posting updates on Twitter and LinkedIn. Shared my struggles with Jetpack Compose. Talked about architecture decisions. Asked for feedback.</p>
+
+                <p>Suddenly, development wasn't boring anymore. People were watching. Commenting. Suggesting improvements. Some even started using the app.</p>
+
+                <p>That external accountability pushed me to keep going. When you know people are watching, you can't just abandon the project halfway (well, you technically can, but it feels awkward).</p>
+
+                <h2>The Real Win: Building my App in Public</h2>
+                <p>Building Quotes app wasn't just about stars or downloads. It was about leveling up my skills.</p>
+
+                <p>I dove deep into Jetpack Compose. Learned Clean Architecture properly, not just surface level. Started writing actual tests instead of skipping them like before. Improved my understanding of MVVM patterns.</p>
+
+                <p>And here's the thing: I made the project open source. Because I learned most of what I know from other people's code. Studying open source projects taught me more than any tutorial ever could. So I wanted to give back.</p>
+
+                <h2>Then Hacktoberfest Happened</h2>
+                <p>Last year during Hacktoberfest, I wanted to contribute to Android projects. But finding good ones was… hard. Most projects were web-focused or had codebases too complex for beginners. There weren't many Android apps that welcomed newcomers.</p>
+
+                <p>I remember thinking, "Someone should fix this."</p>
+
+                <p>So this year, I did.</p>
+
+                <p>I opened up both Quotes app and MovieFlix (my movie discovery app) for Hacktoberfest contributions. Clean architecture, modern tech stack, beginner-friendly issues. Everything I wished existed last year.</p>
+
+                <p>The response? Way better than expected.</p>
+
+                <p>Developers started contributing. First-timers made their first PR. Intermediate devs added features. People from different countries, different skill levels, all working on something together.</p>
+
+                <p>It felt good. Really good.</p>
+
+                <ul>
+                    <li><strong>Quotes app:</strong> <a href="https://github.com/shalenMathew/Quotes-app" target="_blank" rel="noopener noreferrer">github.com/shalenMathew/Quotes-app</a></li>
+                    <li><strong>MovieFlix:</strong> <a href="https://github.com/shalenMathew/MovieFlix_App" target="_blank" rel="noopener noreferrer">github.com/shalenMathew/MovieFlix_App</a></li>
+                </ul>
+
+                <h2>Why Building in Public Changed Everything</h2>
+                <p>Looking back, sharing my journey publicly was the best decision I made this year.</p>
+
+                <p>I connected with developers way better than me. Learned from their feedback. Got motivation when I felt like quitting. Built projects people actually use.</p>
+
+                <p>And now during Hacktoberfest, I'm on the other side as a maintainer. Helping others the way open source helped me.</p>
+
+                <p>If you're sitting on a side project right now, afraid to share it because "it's not perfect yet" or "what if people judge it," just post it. Tweet about it. Write about your struggles. Share your code.</p>
+
+                <p>The worst that happens? Nothing.</p>
+
+                <p>The best that happens? You build something real, learn faster, meet amazing people, and maybe even help someone else learn too.</p>
+
+                <hr>
+                <p>That's all from me for today. If this resonated with you—or you've got tips for building in public—I'd love to hear from you.</p>
+            </div>
+
+            <section class="blog-detail-social" aria-label="Social links">
+                <h3 class="blog-detail-social-title">Follow me on socials</h3>
+                <div class="blog-detail-social-links">
+                    <a class="blog-detail-social-link" href="https://x.com/shalenmathew" target="_blank" rel="noopener noreferrer">X</a>
+                    <a class="blog-detail-social-link" href="https://www.linkedin.com/in/shalen-mathew-3b566921b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a class="blog-detail-social-link" href="https://github.com/shalenMathew" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="blog-detail-social-link" href="https://bsky.app/profile/shalenmathew.bsky.social" target="_blank" rel="noopener noreferrer">BlueSky</a>
+                    <a class="blog-detail-social-link" href="https://linktr.ee/shalenmathew" target="_blank" rel="noopener noreferrer">Linktree</a>
+                </div>
+            </section>
+
+            <div class="blog-detail-cta">
+                <h3>Interested in my work?</h3>
+                <p>Android developer and freelancer—I build production apps for startups, ship client work end-to-end, and maintain open-source projects people actually use.</p>
+                <a href="../index.html" class="blog-detail-cta-button">Check out my portfolio</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
