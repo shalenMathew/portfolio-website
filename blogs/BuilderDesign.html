@@ -3,118 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Quick Guide into Builder Design Pattern in Android</title>
-<style>
-        /* Apply a subtle background and reset default body spacing */
-        html, body {
+    <title>A Quick Guide into Builder Design Pattern in Android | Shalen Mathew</title>
+    <meta name="description" content="This quick guide to the Builder design pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.">
+    <meta name="author" content="Shalen Mathew">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://shalenmathew.github.io/Portfolio-Website/blogs/BuilderDesign.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="A Quick Guide into Builder Design Pattern in Android">
+    <meta property="og:description" content="This quick guide to the Builder design pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.">
+    <meta property="og:url" content="https://shalenmathew.github.io/Portfolio-Website/blogs/BuilderDesign.html">
+    <meta property="og:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A Quick Guide into Builder Design Pattern in Android">
+    <meta name="twitter:description" content="This quick guide to the Builder design pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.">
+    <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "A Quick Guide into Builder Design Pattern in Android",
+        "description": "This quick guide to the Builder design pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.",
+        "datePublished": "2026-05-27",
+        "author": {
+            "@type": "Person",
+            "name": "Shalen Mathew",
+            "url": "https://shalenmathew.github.io/Portfolio-Website/"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://shalenmathew.github.io/Portfolio-Website/blogs/BuilderDesign.html"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="../style.css?v=20260422">
+    <style>
+        body {
+            background-color: #efefee !important;
+            padding: 0;
             margin: 0;
-            padding: 0;
+        }
+
+        .blog-detail-page {
             width: 100%;
-            background-color: #fcfcfc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 7vw;
+            min-height: 100vh;
+            background-color: #efefee;
         }
-        /* Create a dedicated wrapper class to handle centering properly */
-        .blog-container {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto; /* Centers the container */
-            padding: 40px 20px; /* Gives nice breathing room top/bottom and sides */
-            box-sizing: border-box;
+
+        .blog-detail-wrapper {
+            width: 100%;
+            max-width: 900px;
         }
-        h1 {
-            color: #111;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
+
+        .blog-detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            color: #d04033;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: transform 180ms ease;
         }
-        h2 {
-            color: #2c3e50;
-            font-size: 1.75rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3rem;
-            margin-top: 2.5rem;
+
+        .blog-detail-back:hover {
+            transform: translateX(-6px);
         }
-        h3 {
-            color: #34495e;
-            font-size: 1.3rem;
-            margin-top: 1.8rem;
+
+        .blog-detail-header {
+            margin-bottom: 48px;
+            animation: fade-up 700ms ease both;
         }
-        p {
-            margin-bottom: 1.2rem;
+
+        .blog-detail-title {
+            font-family: 'MySolidGraffiti', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            color: #d04033;
+            margin-bottom: 16px;
+            line-height: 1;
+            font-weight: normal;
         }
-        ul {
-            margin-bottom: 1.2rem;
-            padding-left: 20px;
+
+        .blog-detail-meta {
+            color: #6a6a6a;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            font-weight: 400;
         }
-        li {
-            margin-bottom: 0.5rem;
+
+        .blog-detail-content {
+            line-height: 1.8;
+            font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+            color: #4d4d4d;
+            animation: fade-up 800ms ease both;
         }
-        pre {
-            background-color: #f4f5f7;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 15px;
-            overflow-x: auto;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            font-size: 0.9rem;
-            line-height: 1.45;
-            margin: 1.5rem 0;
+
+        .blog-detail-content p {
+            margin-bottom: 24px;
         }
-        code {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            background-color: #f4f5f7;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-size: 0.85em;
+
+        .blog-detail-content h2 {
+            font-size: clamp(1.6rem, 2vw, 1.8rem);
+            color: #3a3a3a;
+            margin: 36px 0 16px;
+            font-weight: 700;
         }
-        pre code {
-            background-color: transparent;
+
+        .blog-detail-content h3 {
+            font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+            color: #3a3a3a;
+            margin: 30px 0 14px;
+            font-weight: 700;
+        }
+
+        .blog-detail-content ul {
+            margin: 20px 0 20px 32px;
             padding: 0;
-            border-radius: 0;
-            font-size: inherit;
         }
-        .intro-text {
-            font-size: 1.15rem;
-            color: #555;
-            font-style: italic;
-            margin-bottom: 2rem;
+
+        .blog-detail-content li {
+            margin-bottom: 12px;
+            color: #4d4d4d;
+        }
+
+        .blog-detail-content pre {
+            background: rgba(58, 58, 58, 0.06);
+            border: 1px solid rgba(208, 64, 51, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            overflow-x: auto;
+            margin: 24px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .blog-detail-content code {
+            font-family: 'Courier New', monospace;
+            color: #3a3a3a;
+        }
+
+        .blog-detail-cta {
+            background: rgba(208, 64, 51, 0.06);
+            border: 1.5px solid rgba(208, 64, 51, 0.18);
+            border-radius: 18px;
+            padding: 32px 28px;
+            margin-top: 64px;
+            animation: fade-up 900ms ease both;
+        }
+
+        .blog-detail-cta h3 {
+            margin-top: 0;
+            color: #d04033;
+            font-size: clamp(1.3rem, 1.6vw, 1.5rem);
+        }
+
+        .blog-detail-cta p {
+            color: #4d4d4d;
+            margin-bottom: 20px;
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+        }
+
+        .blog-detail-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #d04033;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+        }
+
+        .blog-detail-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(208, 64, 51, 0.16);
+            background: #c0351f;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-detail-page {
+                padding: 32px 24px;
+            }
+
+            .blog-detail-title {
+                font-size: 2.2rem;
+            }
+
+            .blog-detail-content {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="blog-detail-page">
+        <div class="blog-detail-wrapper">
+            <a href="../blog.html" class="blog-detail-back">&larr; Back to blogs</a>
 
-    <h1>A Quick Guide into Builder Design Pattern in Android</h1>
-    
-    <p class="intro-text">This quick guide to the Builder Design Pattern is perfect whether you’re looking for a quick revision or aiming to grasp the concept from scratch!</p>
-    
-    <p>The <strong>Builder Pattern</strong> is a <em>creational design pattern</em> used to construct complex objects step by step. It’s especially useful when an object has many optional fields or when you want to make object creation more readable and manageable.</p>
-    
-    <p>If a class has many parameters, instead of adding all of them to the constructor and creating a <strong>telescoping constructor</strong>, the Builder Pattern provides a better approach by allowing you to add or separate optional parameters seamlessly.</p>
-    
-    <p>Let’s understand this with a clear example using a <code>Person</code> class. In this class, there are fields like <code>firstName</code>, <code>lastName</code>, <code>middleName</code>, <code>age</code>, <code>phoneNo</code>, and <code>address</code>. Among these, <code>firstName</code>, <code>lastName</code>, and <code>age</code> are the only <strong>mandatory</strong> fields.</p>
+            <article class="blog-detail-header">
+                <h1 class="blog-detail-title">A Quick Guide into Builder Design Pattern in Android</h1>
+                <p class="blog-detail-meta">Published: <time datetime="2026-05-27">27-05-2026</time></p>
+            </article>
 
-    <h2>The Problem: Without the Builder Pattern</h2>
-    <p>Without the builder pattern, your implementation will look something like this with telescoping constructors:</p>
+            <div class="blog-detail-content">
+                <p>This quick guide to the Builder Design Pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.</p>
 
-<pre><code>class Person(val firstName: String, val lastName: String, val age: Int) {
-    // Telescoping constructor for different combinations of parameters
+                <p>The <strong>Builder Pattern</strong> is a <em>creational design pattern</em> used to construct complex objects step by step. It's especially useful when an object has many optional fields or when you want to make object creation more readable and manageable.</p>
+
+                <p>If a class has many parameters, instead of adding all of them to the constructor and creating a <strong>telescoping constructor</strong>, the Builder Pattern provides a better approach by letting you separate optional parameters cleanly.</p>
+
+                <p>Let's understand this with a clear example using a <code>Person</code> class. In this class, there are fields like <code>firstName</code>, <code>lastName</code>, <code>middleName</code>, <code>age</code>, <code>phoneNo</code>, and <code>address</code>. Among these, <code>firstName</code>, <code>lastName</code>, and <code>age</code> are the only <strong>mandatory</strong> fields.</p>
+
+                <h2>The Problem: Without the Builder Pattern</h2>
+                <p>Without the Builder pattern, your implementation can turn into telescoping constructors like this:</p>
+                <pre><code>class Person(val firstName: String, val lastName: String, val age: Int) {
     constructor(firstName: String, lastName: String, age: Int, middleName: String) : this(firstName, lastName, age)
     constructor(firstName: String, lastName: String, age: Int, middleName: String, phoneNo: String) : this(firstName, lastName, age, middleName)
     constructor(firstName: String, lastName: String, age: Int, middleName: String, phoneNo: String, address: String) : this(firstName, lastName, age, middleName, phoneNo)
 }
 
 fun main() {
-    val person1 = Person("John", "Doe", 30) // Only mandatory fields
-    val person2 = Person("Alice", "Smith", 25, "Marie") // Mandatory + middle name
-    val person3 = Person("Bob", "Johnson", 40, "David", "123-456-7890") // Mandatory + middle name + phone number
-    val person4 = Person("Charlie", "Brown", 35, "Robert", "987-654-3210", "1234 Elm St") // All fields
+    val person1 = Person("John", "Doe", 30)
+    val person2 = Person("Alice", "Smith", 25, "Marie")
+    val person3 = Person("Bob", "Johnson", 40, "David", "123-456-7890")
+    val person4 = Person("Charlie", "Brown", 35, "Robert", "987-654-3210", "1234 Elm St")
 }</code></pre>
 
-    <h2>A Better Approach: Implementing the Builder Pattern</h2>
-    <p>Here is how we can structure and build this class using the Builder Pattern cleanly:</p>
-
-<pre><code>data class Person(
+                <h2>A Better Approach: Implementing the Builder Pattern</h2>
+                <p>Here is how we can structure and build this class using the Builder Pattern more cleanly:</p>
+                <pre><code>data class Person(
     val name: String?,
     val lastName: String?,
     val age: Int?,
@@ -126,16 +260,19 @@ fun main() {
         var middleName: String? = null
         var phoneNo: Int? = null
         var address: String? = null
-        
+
         fun middleName(middleName: String?) = apply {
             this.middleName = middleName
         }
+
         fun phoneNo(phoneNo: Int?) = apply {
             this.phoneNo = phoneNo
         }
+
         fun address(address: String?) = apply {
             this.address = address
         }
+
         fun build(): Person {
             return Person(name, lastName, age, middleName, phoneNo, address)
         }
@@ -143,30 +280,30 @@ fun main() {
 }
 
 fun main() {
-    // Usage of Builder Pattern
     val p1 = Person.PersonBuilder(name = "Shalen", lastName = "Mathew", age = 22)
         .phoneNo(911)
         .address("Bangalore")
         .build()
 }</code></pre>
 
-    <h3>Let's understand what’s going on in the code:</h3>
-    <p>The <code>Person</code> class has fields like <code>name</code>, <code>lastName</code>, <code>age</code>, <code>middleName</code>, <code>phoneNo</code>, and <code>address</code>. Some of these fields are optional (like <code>middleName</code>, <code>phoneNo</code>, and <code>address</code>).</p>
-    <p>Inside the <code>Person</code> class, there's a nested <code>PersonBuilder</code> class. This class helps you build a <code>Person</code> object step-by-step. The <strong>mandatory fields</strong> are defined explicitly in the constructor of the <code>PersonBuilder</code> class.</p>
+                <h3>What's happening in the code?</h3>
+                <p>The <code>Person</code> class has fields like <code>name</code>, <code>lastName</code>, <code>age</code>, <code>middleName</code>, <code>phoneNo</code>, and <code>address</code>. Some of these are optional, like <code>middleName</code>, <code>phoneNo</code>, and <code>address</code>.</p>
 
-    <h3>How It Works:</h3>
-    <ul>
-        <li>You create a <code>PersonBuilder</code> instance by passing the required fields (<code>name</code>, <code>lastName</code>, <code>age</code>).</li>
-        <li>Then, you can optionally add the optional fields using chainable setter methods like <code>.middleName()</code>, <code>.phoneNo()</code>, and <code>.address()</code>.</li>
-        <li>Each setter method uses Kotlin's <code>apply</code> scope function to set the value and <strong>return the builder instance itself</strong>. This allows for clean method chaining.</li>
-        <li>Finally, you call <code>.build()</code> to instantiate and return the <code>Person</code> object populated with all the configured values.</li>
-    </ul>
+                <p>Inside the <code>Person</code> class, there's a nested <code>PersonBuilder</code> class. This builder helps you create a <code>Person</code> object step by step. The mandatory fields are passed into the builder constructor up front.</p>
 
-    <h2>The Kotlin-Way: An Optimized Alternative</h2>
-    <p>While the above code follows a traditional, Java-style implementation, Kotlin provides a much more optimized way to achieve this setup.</p>
-    <p>In Kotlin, we can leverage a <strong>data class</strong> to achieve a builder-like effect simply by defining <strong>default values</strong> for parameters, making them natively optional. This eliminates the need for an explicit, separate builder class entirely while fully maintaining flexibility in object creation.</p>
+                <h3>How it works</h3>
+                <ul>
+                    <li>You create a <code>PersonBuilder</code> instance by passing the required fields: <code>name</code>, <code>lastName</code>, and <code>age</code>.</li>
+                    <li>You can then add optional values using chainable methods like <code>.middleName()</code>, <code>.phoneNo()</code>, and <code>.address()</code>.</li>
+                    <li>Each setter uses Kotlin's <code>apply</code> so it returns the builder itself and keeps the chaining clean.</li>
+                    <li>Finally, calling <code>.build()</code> returns the finished <code>Person</code> object.</li>
+                </ul>
 
-<pre><code>data class Person(
+                <h2>The Kotlin Way: An Optimized Alternative</h2>
+                <p>While the previous code follows a traditional Java-style builder, Kotlin gives us a more direct option.</p>
+
+                <p>In Kotlin, a <strong>data class</strong> with <strong>default values</strong> can often give you builder-like flexibility without creating an explicit builder class.</p>
+                <pre><code>data class Person(
     val name: String,
     val lastName: String,
     val age: Int,
@@ -176,27 +313,33 @@ fun main() {
 )
 
 fun main() {
-    // Using named arguments for the constructor
     val person = Person(
-        name = "Shalen", 
-        lastName = "Mathew", 
-        age = 22, 
-        phoneNo = 911, 
+        name = "Shalen",
+        lastName = "Mathew",
+        age = 22,
+        phoneNo = 911,
         address = "Bangalore"
     )
-    
+
     println(person)
 }</code></pre>
 
-    <h3>Explanation:</h3>
-    <ul>
-        <li>The data class <code>Person</code> has both required parameters (<code>name</code>, <code>lastName</code>, <code>age</code>) and optional parameters (<code>middleName</code>, <code>phoneNo</code>, <code>address</code>).</li>
-        <li>The optional parameters are initialized with <strong>default values</strong> (<code>null</code> in this case), meaning you can safely omit them when creating a <code>Person</code> object.</li>
-    </ul>
+                <h3>Explanation</h3>
+                <ul>
+                    <li>The data class has required parameters like <code>name</code>, <code>lastName</code>, and <code>age</code>.</li>
+                    <li>The optional parameters use default values, so you can omit them safely when creating a <code>Person</code> object.</li>
+                </ul>
 
-    <hr>
+                <hr>
+                <p>That's all from me for today. If you want a quick revision or a practical mental model for this pattern, I hope this helped.</p>
+            </div>
 
-    <p><em>That’s all from me for today! 😁 You can checkout this blog from Medium too !!!</em></p>
-
+            <div class="blog-detail-cta">
+                <h3>Interested in my work?</h3>
+                <p>I'm an app developer and freelancer building thoughtful products, open-source projects, and startup experiences.</p>
+                <a href="../index.html" class="blog-detail-cta-button">Check out my portfolio</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

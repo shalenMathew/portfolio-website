@@ -7,25 +7,18 @@
     <meta name="keywords" content="blog, technology, development, Android, JavaScript, programming">
     <meta name="author" content="Shalen Mathew">
     <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Tags for Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Shalen Mathew - Blog">
     <meta property="og:description" content="Read my latest blog posts on technology and development.">
     <meta property="og:url" content="https://shalenmathew.github.io/Portfolio-Website/blog.html">
     <meta property="og:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
-    
-    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Shalen Mathew - Blog">
     <meta name="twitter:description" content="Read my latest blog posts on technology and development.">
     <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
-    
     <title>Blog - Shalen Mathew | App Developer</title>
     <link rel="stylesheet" href="style.css?v=20260422">
     <link rel="canonical" href="https://shalenmathew.github.io/Portfolio-Website/blog.html">
-    
-    <!-- Schema Markup for Blog Collection -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,7 +33,6 @@
         }
     }
     </script>
-    
     <style>
         .blogs-page-container {
             width: 100%;
@@ -224,11 +216,6 @@
                 padding: 48px 24px;
             }
 
-            .blog-card {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
             .blog-card-meta {
                 justify-content: space-between;
             }
@@ -242,7 +229,7 @@
 <body style="background: #efefee; padding: 0;">
     <div class="blogs-page-container">
         <div class="blogs-page-wrapper">
-            <a href="index.html" class="back-to-home">← Back to home</a>
+            <a href="index.html" class="back-to-home">&larr; Back to home</a>
 
             <div class="blogs-page-header">
                 <h1 class="blogs-page-title">BLOGS</h1>
@@ -256,35 +243,28 @@
     </div>
 
     <script>
-        // Load blogs from manifest.json
         async function loadBlogs() {
             try {
                 const response = await fetch('blogs/Manifest/manifest.json');
                 const blogs = await response.json();
 
-                // Sort by date (newest first)
-                blogs.sort((a, b) => {
-                    const dateA = new Date(a.date.split('-').reverse().join('-'));
-                    const dateB = new Date(b.date.split('-').reverse().join('-'));
-                    return dateB - dateA;
-                });
+                blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-                // Render blogs
                 const blogList = document.getElementById('blogList');
                 blogList.innerHTML = '';
 
-                blogs.forEach(blog => {
+                blogs.forEach((blog) => {
                     const blogCard = document.createElement('a');
                     blogCard.className = 'blog-card';
-                    blogCard.href = `blog-detail.html?slug=${blog.slug}`;
+                    blogCard.href = blog.url;
 
                     blogCard.innerHTML = `
                         <div class="blog-card-content">
                             <h2 class="blog-card-title">${blog.title}</h2>
                             ${blog.description ? `<p class="blog-card-description">${blog.description}</p>` : ''}
                             <div class="blog-card-meta">
-                                <span class="blog-card-date">📅 ${blog.date}</span>
-                                <span class="blog-card-arrow">→</span>
+                                <span class="blog-card-date">Published: ${blog.displayDate || blog.date}</span>
+                                <span class="blog-card-arrow">&rarr;</span>
                             </div>
                         </div>
                     `;

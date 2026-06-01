@@ -3,295 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" id="metaDescription" content="">
-    <meta name="author" content="Shalen Mathew">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:type" content="article">
-    <meta property="og:title" id="ogTitle" content="">
-    <meta property="og:description" id="ogDescription" content="">
-    <meta property="og:url" id="ogUrl" content="">
-    <meta property="og:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="twitterTitle" content="">
-    <meta name="twitter:description" id="twitterDescription" content="">
-    <meta name="twitter:image" content="https://shalenmathew.github.io/Portfolio-Website/assets/Blog.png">
-    
-    <title id="pageTitle">Blog - Shalen Mathew</title>
+    <title>Redirecting to blog | Shalen Mathew</title>
+    <meta name="robots" content="noindex, follow">
     <link rel="stylesheet" href="style.css?v=20260422">
-    <link rel="canonical" id="canonicalLink" href="">
-    
-    <!-- Schema Markup for Blog Post -->
-    <script type="application/ld+json" id="schemaMarkup">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": "",
-        "description": "",
-        "datePublished": "",
-        "author": {
-            "@type": "Person",
-            "name": "Shalen Mathew",
-            "url": "https://shalenmathew.github.io/Portfolio-Website/"
-        }
-    }
-    </script>
-    
     <style>
         body {
-            background-color: #efefee !important;
-        }
-
-        .blog-detail-page {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 48px 7vw;
+            margin: 0;
             min-height: 100vh;
-            background-color: #efefee;
-        }
-
-        .blog-detail-wrapper {
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .blog-detail-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 48px;
-            color: #d04033;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            transition: transform 180ms ease;
-        }
-
-        .blog-detail-back:hover {
-            transform: translateX(-6px);
-        }
-
-        .blog-detail-header {
-            margin-bottom: 48px;
-            animation: fade-up 700ms ease both;
-        }
-
-        .blog-detail-title {
-            font-family: 'MySolidGraffiti', sans-serif;
-            font-size: clamp(2.8rem, 5vw, 4.2rem);
-            color: #d04033;
-            margin-bottom: 16px;
-            line-height: 1;
-            font-weight: normal;
-        }
-
-        .blog-detail-meta {
-            color: #6a6a6a;
-            font-size: clamp(1rem, 1.2vw, 1.1rem);
-            font-weight: 400;
-        }
-
-        .blog-detail-content {
-            line-height: 1.8;
-            font-size: clamp(1.05rem, 1.35vw, 1.25rem);
-            color: #4d4d4d;
-            animation: fade-up 800ms ease both;
-        }
-
-        .blog-detail-content p {
-            margin-bottom: 24px;
-        }
-
-        .blog-detail-content h3 {
-            font-size: clamp(1.6rem, 2vw, 1.8rem);
-            color: #3a3a3a;
-            margin: 36px 0 16px 0;
-            font-weight: 700;
-        }
-
-        .blog-detail-content ul {
-            margin: 20px 0 20px 32px;
-            padding: 0;
-        }
-
-        .blog-detail-content li {
-            margin-bottom: 12px;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: #efefee;
             color: #4d4d4d;
         }
 
-        .blog-detail-content pre {
-            background: rgba(58, 58, 58, 0.06);
-            border: 1px solid rgba(208, 64, 51, 0.08);
-            border-radius: 12px;
-            padding: 18px;
-            overflow-x: auto;
-            margin: 24px 0;
-            font-size: 0.95rem;
+        .redirect-card {
+            width: min(560px, 100%);
+            background: white;
+            border: 1px solid rgba(208, 64, 51, 0.14);
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: 0 18px 40px rgba(58, 58, 58, 0.06);
+        }
+
+        .redirect-card h1 {
+            margin: 0 0 12px;
+            color: #d04033;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+        }
+
+        .redirect-card p {
+            margin: 0 0 18px;
             line-height: 1.6;
         }
 
-        .blog-detail-content code {
-            font-family: 'Courier New', monospace;
-            color: #3a3a3a;
-        }
-
-        .blog-detail-cta {
-            background: rgba(208, 64, 51, 0.06);
-            border: 1.5px solid rgba(208, 64, 51, 0.18);
-            border-radius: 18px;
-            padding: 32px 28px;
-            margin-top: 64px;
-            animation: fade-up 900ms ease both;
-        }
-
-        .blog-detail-cta h3 {
-            margin-top: 0;
+        .redirect-link {
             color: #d04033;
-            font-size: clamp(1.3rem, 1.6vw, 1.5rem);
-        }
-
-        .blog-detail-cta p {
-            color: #4d4d4d;
-            margin-bottom: 20px;
-            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
-        }
-
-        .blog-detail-cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #d04033;
-            color: white;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 12px;
             font-weight: 700;
-            font-size: 1.05rem;
-            transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
-        }
-
-        .blog-detail-cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 22px rgba(208, 64, 51, 0.16);
-            background: #c0351f;
-        }
-
-        @keyframes fade-up {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .blog-detail-page {
-                padding: 32px 24px;
-            }
-
-            .blog-detail-title {
-                font-size: 2.2rem;
-            }
-
-            .blog-detail-content {
-                font-size: 1.1rem;
-            }
         }
     </style>
 </head>
-<body style="background: #efefee; padding: 0; margin: 0;">
-    <div class="blog-detail-page">
-        <div class="blog-detail-wrapper">
-            <a href="blog.html" class="blog-detail-back">← Back to blogs</a>
-
-            <article class="blog-detail-header">
-                <h1 class="blog-detail-title" id="blogTitle">Loading...</h1>
-                <p class="blog-detail-meta">📅 Published: <time id="blogDate">Loading...</time></p>
-            </article>
-
-            <div class="blog-detail-content" id="blogContent">
-                <p>Loading blog content...</p>
-            </div> 
-
-            <div class="blog-detail-cta">
-                <h3>Interested in my work?</h3>
-                <p>I'm an app developer and a freelancer. Click below to learn more about my lore. You will love my work .</p>
-                <a href="index.html" class="blog-detail-cta-button">Check Out My Portfolio →</a>
-            </div>
-        </div>
-    </div>
+<body>
+    <main class="redirect-card">
+        <h1>Redirecting...</h1>
+        <p>If you're not redirected automatically, use the link below.</p>
+        <p><a class="redirect-link" id="fallbackLink" href="blog.html">Go to blogs</a></p>
+    </main>
 
     <script>
-        // Get blog slug from URL parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const blogSlug = urlParams.get('slug');
+        async function redirectToStandaloneBlog() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+            const fallbackLink = document.getElementById('fallbackLink');
 
-        // Load blog from manifest.json
-        async function loadBlog() {
+            if (!slug) {
+                fallbackLink.href = 'blog.html';
+                return;
+            }
+
             try {
                 const response = await fetch('blogs/Manifest/manifest.json');
                 const blogs = await response.json();
+                const blog = blogs.find((entry) => entry.slug === slug);
 
-                // Find blog by slug
-                const blog = blogs.find(b => b.slug === blogSlug);
-
-                if (blog) {
-                    // Load the blog HTML file
-                    const contentResponse = await fetch(`blogs/${blog.file}`);
-                    const contentHtml = await contentResponse.text();
-
-                    // Update page title and metadata
-                    const title = blog.title;
-                    const description = blog.description || 'Read this blog post';
-                    const date = blog.date;
-                    const url = `https://shalenmathew.github.io/Portfolio-Website/blog-detail.html?slug=${blog.slug}`;
-
-                    document.getElementById('pageTitle').textContent = `${title} - Shalen Mathew`;
-                    document.getElementById('metaDescription').setAttribute('content', description);
-                    document.getElementById('ogTitle').setAttribute('content', title);
-                    document.getElementById('ogDescription').setAttribute('content', description);
-                    document.getElementById('ogUrl').setAttribute('content', url);
-                    document.getElementById('twitterTitle').setAttribute('content', title);
-                    document.getElementById('twitterDescription').setAttribute('content', description);
-                    document.getElementById('canonicalLink').setAttribute('href', url);
-
-                    // Update schema markup
-                    const schema = {
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        "headline": title,
-                        "description": description,
-                        "datePublished": date,
-                        "author": {
-                            "@type": "Person",
-                            "name": "Shalen Mathew",
-                            "url": "https://shalenmathew.github.io/Portfolio-Website/"
-                        }
-                    };
-                    document.getElementById('schemaMarkup').textContent = JSON.stringify(schema);
-
-                    // Update page content
-                    document.getElementById('blogTitle').textContent = title;
-                    document.getElementById('blogDate').textContent = date;
-                    document.getElementById('blogContent').innerHTML = contentHtml;
-                } else {
-                    document.getElementById('blogContent').innerHTML = '<p>Blog not found.</p>';
+                if (blog && blog.url) {
+                    fallbackLink.href = blog.url;
+                    window.location.replace(blog.url);
+                    return;
                 }
             } catch (error) {
-                console.error('Error loading blog:', error);
-                document.getElementById('blogContent').innerHTML = '<p>Error loading blog content.</p>';
+                console.error('Redirect failed:', error);
             }
+
+            fallbackLink.href = 'blog.html';
         }
 
-        document.addEventListener('DOMContentLoaded', loadBlog);
+        redirectToStandaloneBlog();
     </script>
 </body>
 </html>

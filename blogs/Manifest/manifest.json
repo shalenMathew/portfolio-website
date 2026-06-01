@@ -2,19 +2,21 @@
   {
     "id": 1,
     "title": "A Guide to Using Singleton Design Pattern in Android",
-    "description": "Learn about the Singleton design pattern in Android development. Explore implementations in Java and Kotlin, and understand when and how to use this powerful pattern effectively.",
-    "date": "26-05-2026",
+    "description": "Learn about the Singleton design pattern in Android development. Explore implementations in Java and Kotlin, and understand when and how to use this pattern effectively.",
+    "date": "2026-05-26",
+    "displayDate": "26-05-2026",
     "slug": "singleton-design-pattern-android",
-    "file": "Singleton.html"
+    "file": "Singleton.html",
+    "url": "blogs/Singleton.html"
   },
-
-   {
+  {
     "id": 2,
     "title": "A Quick Guide into Builder Design Pattern in Android",
-    "description": "This quick Guide to the Builder Design Pattern is perfect whether you’re looking for a quick revision or aiming to grasp the concept from scratch.",
-    "date": "27-05-2026",
+    "description": "This quick guide to the Builder design pattern is perfect whether you're looking for a quick revision or trying to understand the concept from scratch.",
+    "date": "2026-05-27",
+    "displayDate": "27-05-2026",
     "slug": "builder-design-pattern-android",
-    "file": "BuilderDesign.html"
+    "file": "BuilderDesign.html",
+    "url": "blogs/BuilderDesign.html"
   }
 ]
-

@@ -257,21 +257,9 @@
                 <p class="blogs-intro">Here are a few blogs where I share what I’m learning and building.</p>
 
                 <div class="blog-list">
-                    <a class="blog-row" href="#">
-                        <span class="blog-title-text">How to freelance and make money as a Freelance ...</span>
-                        <span class="blog-date">24-03-2022</span>
-                    </a>
-                    <a class="blog-row" href="#">
-                        <span class="blog-title-text">Ace the Javascript Interview</span>
-                        <span class="blog-date">24-03-2022</span>
-                    </a>
-                    <a class="blog-row" href="#">
-                        <span class="blog-title-text">Top 5 courses and resources to learn Next JS ...</span>
-                        <span class="blog-date">24-03-2022</span>
-                    </a>
-                    <a class="blog-row" href="#">
-                        <span class="blog-title-text">Ace the Javascript Interview</span>
-                        <span class="blog-date">24-03-2022</span>
+                    <a class="blog-row" href="blog.html">
+                        <span class="blog-title-text">Latest blog posts are loading. Tap here to open the full blog page.</span>
+                        <span class="blog-date">View all</span>
                     </a>
                 </div>
 
@@ -365,11 +353,7 @@
                 const blogs = await response.json();
 
                 // Sort by date (newest first)
-                blogs.sort((a, b) => {
-                    const dateA = new Date(a.date.split('-').reverse().join('-'));
-                    const dateB = new Date(b.date.split('-').reverse().join('-'));
-                    return dateB - dateA;
-                });
+                blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
                 // Get latest 4
                 const latestBlogs = blogs.slice(0, 4);
@@ -381,10 +365,10 @@
                     latestBlogs.forEach(blog => {
                         const blogRow = document.createElement('a');
                         blogRow.className = 'blog-row';
-                        blogRow.href = `blog-detail.html?slug=${blog.slug}`;
+                        blogRow.href = blog.url;
                         blogRow.innerHTML = `
                             <span class="blog-title-text">${blog.title}</span>
-                            <span class="blog-date">${blog.date}</span>
+                            <span class="blog-date">${blog.displayDate || blog.date}</span>
                         `;
                         blogList.appendChild(blogRow);
                     });
