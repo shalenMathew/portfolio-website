@@ -156,8 +156,45 @@
             color: #3a3a3a;
         }
 
-        .blog-detail-social {
+        .blog-detail-medium {
             margin-top: 48px;
+            padding: 28px 26px;
+            border: 1.5px solid rgba(58, 58, 58, 0.12);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.45);
+            text-align: center;
+            animation: fade-up 850ms ease both;
+        }
+
+        .blog-detail-medium p {
+            margin: 0 0 18px;
+            font-size: clamp(1.02rem, 1.3vw, 1.12rem);
+            color: #4d4d4d;
+            line-height: 1.55;
+        }
+
+        .blog-detail-medium-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border: 2px solid var(--theme-red, #d04033);
+            border-radius: 999px;
+            color: #d04033;
+            font-size: 0.98rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .blog-detail-medium-button:hover {
+            background: rgba(208, 64, 51, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(208, 64, 51, 0.1);
+        }
+
+        .blog-detail-social {
+            margin-top: 40px;
             padding-top: 36px;
             border-top: 1px solid rgba(58, 58, 58, 0.1);
             animation: fade-up 850ms ease both;
@@ -338,6 +375,11 @@
                 <hr>
                 <p>That's all from me for today. If this resonated with you—or you've got tips for building in public—I'd love to hear from you.</p>
             </div>
+
+            <section class="blog-detail-medium" aria-label="Read on Medium">
+                <p>Prefer Medium? Read the full version there with the same story, formatted for a clean reading experience.</p>
+                <a class="blog-detail-medium-button" href="https://medium.com/@shalenmathew/why-im-building-in-public-and-why-you-should-too-ec933f9fd2ef" target="_blank" rel="noopener noreferrer">Read this whole blog on Medium</a>
+            </section>
 
             <section class="blog-detail-social" aria-label="Social links">
                 <h3 class="blog-detail-social-title">Follow me on socials</h3>
