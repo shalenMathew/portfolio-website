@@ -170,6 +170,8 @@
             <em>Check out my open-source projects and feel free<br>to install any that you like!</em>
         </p>
 
+        <div class="projects-grid" aria-label="Open source projects"></div>
+
         <article class="project-item">
             <a class="project-image" href="https://github.com/shalenMathew/Quotes-app" target="_blank" rel="noopener noreferrer" aria-label="Open Quotes app GitHub repository">
                 <img src="assets/Quotes_banner.png" alt="Quotes app preview">
@@ -351,6 +353,126 @@
             }
         });
 
+        const projects = [
+            {
+                name: "QUOTES.APP",
+                description: "Minimal quotes app with Tinder-like swipes and deep customization options.",
+                language: "Kotlin",
+                stars: "100+ stars",
+                image: "assets/Quotes_banner.png",
+                imageAlt: "Quotes app preview",
+                repoUrl: "https://github.com/shalenMathew/Quotes-app",
+                siteUrl: "https://shalenmathew.github.io/quotes_app_website/"
+            },
+            {
+                name: "MOVIEFLIX",
+                description: "Movie and shows discovery app built with modern Android tools and architecture.",
+                language: "Kotlin",
+                stars: "50+ stars",
+                image: "assets/MovieFlix.png",
+                imageAlt: "MovieFlix app preview",
+                repoUrl: "https://github.com/shalenMathew/MovieFlix_App"
+            },
+            {
+                name: "INVESTIQ",
+                description: "Stock market app for viewing US stock prices and detailed company information.",
+                language: "Kotlin",
+                stars: "30+ stars",
+                image: "assets/investIQ.png",
+                imageAlt: "InvestIQ app preview",
+                imageLight: true,
+                repoUrl: "https://github.com/shalenMathew/InvestIq-AndroidApp"
+            }
+        ];
+
+        function createProjectAction(url, icon, label) {
+            const action = document.createElement("a");
+            action.href = url;
+            action.target = "_blank";
+            action.rel = "noopener noreferrer";
+
+            const actionIcon = document.createElement("img");
+            actionIcon.src = icon;
+            actionIcon.alt = "";
+
+            const actionLabel = document.createElement("span");
+            actionLabel.textContent = label;
+
+            action.append(actionIcon, actionLabel);
+            return action;
+        }
+
+        function renderProjects() {
+            const projectsGrid = document.querySelector(".projects-grid");
+            if (!projectsGrid) return;
+
+            projectsGrid.innerHTML = "";
+
+            projects.forEach(project => {
+                const card = document.createElement("article");
+                card.className = "project-cell";
+
+                const preview = document.createElement("a");
+                preview.className = project.imageLight ? "project-preview project-preview-light" : "project-preview";
+                preview.href = project.repoUrl;
+                preview.target = "_blank";
+                preview.rel = "noopener noreferrer";
+                preview.setAttribute("aria-label", `Open ${project.name} GitHub repository`);
+
+                const image = document.createElement("img");
+                image.src = project.image;
+                image.alt = project.imageAlt;
+                preview.appendChild(image);
+
+                const body = document.createElement("div");
+                body.className = "project-cell-body";
+
+                const top = document.createElement("div");
+                top.className = "project-cell-top";
+
+                const name = document.createElement("h3");
+                name.className = "project-name";
+                name.textContent = project.name;
+
+                const open = document.createElement("a");
+                open.className = "project-open";
+                open.href = project.repoUrl;
+                open.target = "_blank";
+                open.rel = "noopener noreferrer";
+                open.setAttribute("aria-label", `Open ${project.name} GitHub repository`);
+                open.textContent = "\u2197";
+
+                const summary = document.createElement("p");
+                summary.className = "project-summary";
+                summary.textContent = project.description;
+
+                const meta = document.createElement("div");
+                meta.className = "project-meta";
+
+                const language = document.createElement("span");
+                language.className = "project-language";
+                language.textContent = project.language;
+
+                const stars = document.createElement("span");
+                stars.className = "project-stars-count";
+                stars.textContent = project.stars;
+
+                const actions = document.createElement("div");
+                actions.className = "project-actions";
+                actions.appendChild(createProjectAction(project.repoUrl, "assets/github.png", "Github"));
+
+                if (project.siteUrl) {
+                    actions.appendChild(createProjectAction(project.siteUrl, "assets/site.png", "Site"));
+                }
+
+                top.append(name, open);
+                meta.append(language, stars);
+                body.append(top, summary, meta, actions);
+                card.append(preview, body);
+                projectsGrid.appendChild(card);
+            });
+        }
+
         // Load latest 4 blogs dynamically from manifest.json
         async function loadLatestBlogs() {
             try {
@@ -383,8 +505,10 @@
             }
         }
 
-        // Load blogs when page loads
-        document.addEventListener('DOMContentLoaded', loadLatestBlogs);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            loadLatestBlogs();
+        });
     </script>
 </body>
 </html>
