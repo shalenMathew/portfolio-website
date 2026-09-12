@@ -49,7 +49,7 @@
         ]
     }
     </script>
-    <link rel="stylesheet" href="style.css?v=20260422">
+    <link rel="stylesheet" href="style.css?v=20260912">
 </head>
 <body>
     <audio id="background-music" loop preload="metadata">
@@ -136,24 +136,24 @@
     <p class="about-intro"><em>I build android apps and an experienced freelancer</em></p>
 
     <p>
-        I am an Android developer with a background in high-growth startups and professional freelancing.
+        I am an <strong>Android developer</strong> with a background in <strong>high-growth startups</strong> and <strong>professional freelancing</strong>.
     </p>
 
     <p>
-        I have 5+ years of building production-grade apps and significant experience working as an Android Developer in startups.
+        I have <strong>5+ years</strong> of building <strong>production-grade apps</strong> and significant experience working as an <strong>Android Developer</strong> in startups.
     </p>
 
 
     <p>
-        Beyond my commercial work, I maintain open-source Android projects with over 200+ stars that are actively used by real users.
+        Beyond my commercial work, I maintain <strong>open-source Android projects</strong> with over <strong>200+ stars</strong> that are actively used by <strong>real users</strong>.
     </p>
 
     <p>
-        <a href="#projects" class="about-link">My projects</a> show my ability to build clean structured scalable apps following industry standards.
+        <a href="#projects" class="about-link">My projects</a> show my ability to build <strong>clean</strong>, <strong>structured</strong>, <strong>scalable apps</strong> following <strong>industry standards</strong>.
     </p>
 
     <p>
-        <i>Currently learning <em>React native</em> to explore multi-platform apps</i>
+        <i>Currently learning <strong><em>React native</em></strong> to explore <strong>multi-platform apps</strong></i>
     </p>
 </div>
 
@@ -286,18 +286,93 @@
         <div class="skills-copy">
             <p class="skills-intro"><em>I have solid foundation in</em></p>
 
-            <p><strong>Languages:</strong> Kotlin, Java</p>
-            <p><strong>Architecture:</strong> MVVM, MVI, Clean Architecture</p>
-            <p><strong>Jetpack Components:</strong> ViewModel, LiveData, Room, navigation, WorkManager, Paging3</p>
-            <p><strong>Asynchronous:</strong> Coroutines, Flow,</p>
-            <p><strong>State Management:</strong> LiveData, Flows</p>
-            <p><strong>Networking:</strong> Retrofit, OkHttp, Ktor</p>
-            <p><strong>Dependency Injection:</strong> Hilt, Dagger, Koin</p>
-            <p><strong>Backend &amp; storage:</strong> Firestore, FCM, Firebase Auth, Firebase Analytics, Crashlytics</p>
-            <p><strong>Android Components:</strong> Service, BroadcastReceiver, ContentProvider, IntentService, Foreground Services</p>
-            <p><strong>Testing:</strong> JUnit, Espresso, Mockito</p>
-            <p><strong>Tools:</strong> Android Studio, Git, GitHub, postman, Gradle, CI/CD</p>
-            <p><strong>Others:</strong> Jetpack Compose, DataStore, Glide, Coil, Google Maps SDK</p>
+            <div class="skills-list" aria-label="Technical skills">
+                <article class="skill-row">
+                    <span class="skill-index">01</span>
+                    <h3>Languages &amp; Core</h3>
+                    <div class="skill-tags">
+                        <span>Kotlin</span>
+                        <span>Java</span>
+                        <span>Android SDK</span>
+                        <span>Jetpack Compose</span>
+                    </div>
+                </article>
+
+                <article class="skill-row">
+                    <span class="skill-index">02</span>
+                    <h3>Architecture</h3>
+                    <div class="skill-tags">
+                        <span>MVVM</span>
+                        <span>MVI</span>
+                        <span>Clean Architecture</span>
+                    </div>
+                </article>
+
+                <article class="skill-row">
+                    <span class="skill-index">03</span>
+                    <h3>Android &amp; Jetpack</h3>
+                    <div class="skill-tags">
+                        <span>ViewModel</span>
+                        <span>LiveData</span>
+                        <span>Room</span>
+                        <span>Navigation</span>
+                        <span>WorkManager</span>
+                        <span>Paging 3</span>
+                        <span>Service</span>
+                        <span>BroadcastReceiver</span>
+                        <span>ContentProvider</span>
+                        <span>Foreground Services</span>
+                    </div>
+                </article>
+
+                <article class="skill-row">
+                    <span class="skill-index">04</span>
+                    <h3>Async &amp; State</h3>
+                    <div class="skill-tags">
+                        <span>Coroutines</span>
+                        <span>Flow</span>
+                        <span>LiveData</span>
+                        <span>DataStore</span>
+                    </div>
+                </article>
+
+                <article class="skill-row">
+                    <span class="skill-index">05</span>
+                    <h3>Networking &amp; Backend</h3>
+                    <div class="skill-tags">
+                        <span>Retrofit</span>
+                        <span>OkHttp</span>
+                        <span>Ktor</span>
+                        <span>Firestore</span>
+                        <span>Firebase Auth</span>
+                        <span>FCM</span>
+                        <span>Analytics</span>
+                        <span>Crashlytics</span>
+                        <span>Glide</span>
+                        <span>Coil</span>
+                        <span>Google Maps SDK</span>
+                    </div>
+                </article>
+
+                <article class="skill-row">
+                    <span class="skill-index">06</span>
+                    <h3>Tools &amp; Testing</h3>
+                    <div class="skill-tags">
+                        <span>Hilt</span>
+                        <span>Dagger</span>
+                        <span>Koin</span>
+                        <span>JUnit</span>
+                        <span>Espresso</span>
+                        <span>Mockito</span>
+                        <span>Android Studio</span>
+                        <span>Git</span>
+                        <span>GitHub</span>
+                        <span>Postman</span>
+                        <span>Gradle</span>
+                        <span>CI/CD</span>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -317,14 +392,27 @@
             <div class="experience-timeline">
                 <div class="timeline-line" aria-hidden="true"></div>
 
-                <article class="experience-item">
+                <article class="experience-item experience-item--expandable" tabindex="0" role="button" aria-expanded="false">
                     <h3>LiveInTech Venture Studio</h3>
                     <p>Associate Mobile Developer</p>
+                    <ul class="experience-details">
+                        <li>Developed new features and configured existing modules in a Java-based MVVM Android app.</li>
+                        <li>Integrated and configured a third-party AI motion-tracking SDK in the inTeam app, handling detection callbacks, API data flow, and RecyclerView UI updates for real-time results.</li>
+                        <li>Developed an end-to-end event booking module covering UI, payment processing, and confirmation flows.</li>
+                        <li>Built complex booking logic and UI from specifications, integrating 25+ APIs without disrupting existing features.</li>
+                    </ul>
                 </article>
 
-                <article class="experience-item">
+                <article class="experience-item experience-item--expandable" tabindex="0" role="button" aria-expanded="false">
                     <h3>Spacenos</h3>
                     <p>Android Intern</p>
+                    <ul class="experience-details">
+                        <li>Built an app from scratch, handling both design and development.</li>
+                        <li>Migrated an existing app from Java to Kotlin.</li>
+                        <li>Designed and implemented MVVM architecture.</li>
+                        <li>Integrated Firebase functionality including authentication and realtime database features.</li>
+                        <li>Developed complex layouts from scratch.</li>
+                    </ul>
                 </article>
             </div>
         </div>
@@ -351,6 +439,32 @@
                 musicToggle.setAttribute("aria-label", "Play background music");
                 musicToggle.setAttribute("aria-pressed", "false");
             }
+        });
+
+        const experienceItems = document.querySelectorAll(".experience-item--expandable");
+
+        experienceItems.forEach((item) => {
+            const toggleExperience = () => {
+                const isOpen = item.classList.contains("experience-item--open");
+
+                experienceItems.forEach((experienceItem) => {
+                    experienceItem.classList.remove("experience-item--open");
+                    experienceItem.setAttribute("aria-expanded", "false");
+                });
+
+                if (!isOpen) {
+                    item.classList.add("experience-item--open");
+                    item.setAttribute("aria-expanded", "true");
+                }
+            };
+
+            item.addEventListener("click", toggleExperience);
+            item.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleExperience();
+                }
+            });
         });
 
         const projects = [
